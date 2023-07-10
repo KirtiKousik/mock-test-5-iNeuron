@@ -1,0 +1,83 @@
+<!-- Create a app where you have an input box and whenever a user types something in the input box and hits submit it should be added on the webpage below the input box -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ANSWER-02</title>
+  </head>
+
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      font-family: sans-serif;
+    }
+    .container {
+      border: 2px solid gray;
+      border-radius: 20px;
+      min-height: 300px;
+      min-width: 600px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      background: linear-gradient(135deg, red, yellow);
+    }
+    input {
+      padding: 10px;
+      margin: 10px;
+      border-radius: 40px;
+      border: none;
+      outline: none;
+      color: gray;
+      font-weight: bold;
+    }
+    input::placeholder {
+      font-size: 14px;
+      font-weight: 400;
+    }
+    p {
+      font-size: 20px;
+      padding: 10px;
+      font-weight: bold;
+      color: white;
+    }
+    .btn {
+      background: linear-gradient(135deg, green, yellow);
+      color: white;
+    }
+  </style>
+  <body>
+    <div class="container">
+      <div>
+        <input type="text" placeholder="Type Something..." />
+        <input type="submit" value="Submit" class="submit btn" />
+      </div>
+      <p class="submitted-input"></p>
+    </div>
+
+    <script>
+      const inputBox = document.querySelector("input");
+      const submitBtn = document.querySelector(".submit");
+      const submittedInput = document.querySelector(".submitted-input");
+
+      // click the submit button to submit
+      submitBtn.addEventListener("click", () => {
+        submittedInput.textContent = inputBox.value;
+        inputBox.value = "";
+      });
+
+      // press enter to submit
+      inputBox.addEventListener("keyup", (e) => {
+        if (e.key === "Enter") {
+          submitBtn.click();
+          e.target.value = "";
+        }
+      });
+    </script>
+  </body>
+</html>
